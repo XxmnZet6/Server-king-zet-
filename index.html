@@ -48,18 +48,18 @@ button{width:100%;margin-top:14px;border:0;border-radius:14px;padding:13px;backg
   <div style="text-align:center"><span class="badge">● KING ZET MODE ONLY</span></div>
 
   <div class="section">MENUV1</div>
-  <div class="item"><div><div class="name">Body Lock</div><div class="desc">SAFEMODE </div></div><div class="switch" onclick="toggle(this)"></div></div>
-  <div class="item"><div><div class="name">Aim Lock</div><div class="desc">SAFEMODE</div></div><div class="switch" onclick="toggle(this)"></div></div>
-  <div class="item"><div><div class="name">Head Shot</div><div class="desc">SAFEMODE</div></div><div class="switch" onclick="toggle(this)"></div></div>
+  <div class="item"><div><div class="name">FPSBOOST</div><div class="desc">UNTUKMELANCARKANHP </div></div><div class="switch" onclick="toggle(this)"></div></div>
+  <div class="item"><div><div class="name">PELICINLAYAR</div><div class="desc">UNTUK MELICIN KAN </div></div><div class="switch" onclick="toggle(this)"></div></div>
+  <div class="item"><div><div class="name">DRAG HS 60%</div><div class="desc">DRAG HS</div></div><div class="switch" onclick="toggle(this)"></div></div>
 
   <div class="section">MENUV2</div>
-  <div class="item"><div><div class="name">BYPASS</div><div class="desc">MENU</div></div><div class="switch" onclick="toggle(this)"></div></div>
-  <div class="item"><div><div class="name">ACTIVEALL</div><div class="desc">MENU</div></div><div class="switch" onclick="toggle(this)"></div></div>
-  <div class="item"><div><div class="name">Crosshair</div><div class="desc">MENU</div></div><div class="switch" onclick="toggle(this)"></div></div>
+  <div class="item"><div><div class="name">BODYLOCK</div><div class="desc">MENU</div></div><div class="switch" onclick="toggle(this)"></div></div>
+  <div class="item"><div><div class="name">LOCKBODY45%</div><div class="desc">MENU</div></div><div class="switch" onclick="toggle(this)"></div></div>
+  <div class="item"><div><div class="name">LOCKHEAD45%</div><div class="desc">MENU</div></div><div class="switch" onclick="toggle(this)"></div></div>
 
   <div class="section">DEV</div>
-  <div class="item"><div><div class="name">ANTIBANON</div><div class="desc">DEVBYZETonly</div></div><div class="switch" onclick="toggle(this)"></div></div>
-  <div class="item"><div><div class="name">DEVBYZET</div><div class="desc">DEVBYZETonly</div></div><div class="switch" onclick="toggle(this)"></div></div>
+  <div class="item"><div><div class="name">FPSINJECTOR</div><div class="desc">DEVBYZT</div></div><div class="switch" onclick="toggle(this)"></div></div>
+  <div class="item"><div><div class="name">FPSBOOST</div><div class="desc">DEVBYZT</div></div><div class="switch" onclick="toggle(this)"></div></div>
 
   <div class="status" id="status">Status: READY</div>
   <button onclick="resetAll()">RESET ALL</button>
@@ -84,20 +84,8 @@ function logout(){
   document.getElementById('login').style.display='block';
   document.getElementById('password').value='';
 }
-let audioCtx;
-function successSound(){
-  audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();
-  const o=audioCtx.createOscillator(), g=audioCtx.createGain();
-  o.type='sine'; o.frequency.setValueAtTime(660,audioCtx.currentTime);
-  o.frequency.exponentialRampToValueAtTime(990,audioCtx.currentTime+0.12);
-  g.gain.setValueAtTime(0.0001,audioCtx.currentTime);
-  g.gain.exponentialRampToValueAtTime(0.12,audioCtx.currentTime+0.01);
-  g.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+0.18);
-  o.connect(g); g.connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime+0.18);
-}
 function toggle(el){
   el.classList.toggle('on');
-  if(el.classList.contains('on')) successSound();
   const active=document.querySelectorAll('.switch.on').length;
   document.getElementById('status').textContent='Status: '+active+' OPTION AKTIF';
 }
@@ -105,6 +93,12 @@ function resetAll(){
   document.querySelectorAll('.switch').forEach(x=>x.classList.remove('on'));
   document.getElementById('status').textContent='Status: READY';
 }
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter' && document.getElementById('login').style.display!=='none') login();
+});
+</script>
+</body>
+</html>}
 document.addEventListener('keydown',e=>{
   if(e.key==='Enter' && document.getElementById('login').style.display!=='none') login();
 });
